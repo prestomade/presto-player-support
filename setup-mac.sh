@@ -84,6 +84,15 @@ else
     fi
 fi
 
+if [ -d "$REPOS_DIR/presto-player-pro" ]; then
+    echo "       presto-player-pro already cloned. ✓"
+else
+    echo "       Cloning presto-player-pro..."
+    if ! gh repo clone "prestomade/presto-player-pro" "$REPOS_DIR/presto-player-pro" -- --depth 1 2>/dev/null; then
+        print_error "Could not clone presto-player-pro." "Check that you have access. Ask your admin if needed."
+    fi
+fi
+
 if [ ! -d "$REPOS_DIR/presto-player-support.wiki" ]; then
     echo "       Cloning wiki..."
     git clone --depth 1 "https://github.com/prestomade/presto-player-support.wiki.git" "$REPOS_DIR/presto-player-support.wiki" 2>/dev/null || echo "       Wiki not found (will use local wiki/ folder). ✓"

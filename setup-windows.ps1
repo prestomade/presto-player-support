@@ -59,6 +59,14 @@ if (Test-Path $TargetDir) {
     gh repo clone prestomade/presto-player $TargetDir -- --depth 1
 }
 
+$ProDir = Join-Path $ReposDir "presto-player-pro"
+if (Test-Path $ProDir) {
+    Write-Host "       presto-player-pro already cloned. ✓" -ForegroundColor Green
+} else {
+    Write-Host "       Cloning presto-player-pro..."
+    gh repo clone prestomade/presto-player-pro $ProDir -- --depth 1
+}
+
 $WikiDir = Join-Path $ReposDir "presto-player-support.wiki"
 if (-not (Test-Path $WikiDir)) {
     Write-Host "       Cloning wiki..."

@@ -25,6 +25,14 @@ if exist "%REPOS_DIR%\presto-player" (
     gh repo clone prestomade/presto-player "%REPOS_DIR%\presto-player" -- --depth 1 2>nul || echo   Could not clone presto-player
 )
 
+if exist "%REPOS_DIR%\presto-player-pro" (
+    echo   Updating presto-player-pro...
+    cd /d "%REPOS_DIR%\presto-player-pro" && git pull --ff-only 2>nul || echo   Could not update presto-player-pro
+) else (
+    echo   Cloning presto-player-pro...
+    gh repo clone prestomade/presto-player-pro "%REPOS_DIR%\presto-player-pro" -- --depth 1 2>nul || echo   Could not clone presto-player-pro
+)
+
 if exist "%REPOS_DIR%\presto-player-support.wiki" (
     echo   Updating wiki...
     cd /d "%REPOS_DIR%\presto-player-support.wiki" && git pull --ff-only 2>nul || echo   Could not update wiki
@@ -41,6 +49,7 @@ cd /d "%SCRIPT_DIR%"
 
 set EXTRA_DIRS=
 if exist "%REPOS_DIR%\presto-player" set EXTRA_DIRS=%EXTRA_DIRS% --add-dir "%REPOS_DIR%\presto-player"
+if exist "%REPOS_DIR%\presto-player-pro" set EXTRA_DIRS=%EXTRA_DIRS% --add-dir "%REPOS_DIR%\presto-player-pro"
 if exist "%REPOS_DIR%\presto-player-support.wiki" set EXTRA_DIRS=%EXTRA_DIRS% --add-dir "%REPOS_DIR%\presto-player-support.wiki"
 
 claude %EXTRA_DIRS%

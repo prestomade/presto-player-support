@@ -48,6 +48,7 @@ cd "$SCRIPT_DIR" && git pull --ff-only 2>/dev/null || echo "  Could not update s
 
 # Clone/update all repos in parallel
 clone_or_update "prestomade/presto-player" "presto-player" &
+clone_or_update "prestomade/presto-player-pro" "presto-player-pro" &
 
 # Wiki
 if [ -d "$REPOS_DIR/presto-player-support.wiki" ]; then
@@ -100,6 +101,7 @@ cd "$SCRIPT_DIR"
 
 EXTRA_DIRS=""
 [ -d "$REPOS_DIR/presto-player" ] && EXTRA_DIRS="$EXTRA_DIRS --add-dir $REPOS_DIR/presto-player"
+[ -d "$REPOS_DIR/presto-player-pro" ] && EXTRA_DIRS="$EXTRA_DIRS --add-dir $REPOS_DIR/presto-player-pro"
 [ -d "$REPOS_DIR/presto-player-support.wiki" ] && EXTRA_DIRS="$EXTRA_DIRS --add-dir $REPOS_DIR/presto-player-support.wiki"
 
 eval "$CLAUDE_BIN" $EXTRA_DIRS
