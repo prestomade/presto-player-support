@@ -51,6 +51,7 @@ Ask questions in plain English. Examples:
 | `/lookup-api` | Look up a specific REST API endpoint |
 | `/search-docs` | Search documentation and runbooks |
 | `/trace-flow` | Trace a feature's code execution flow |
+| `/ask-developer` | Generate a ready-to-paste Slack message for developer escalation |
 
 ## How It Works
 
